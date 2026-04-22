@@ -1,31 +1,54 @@
 # mcp-launches
 
-MCP server for rocket launch data via the [Launch Library 2 API](https://thespacedevs.com/llapi). No authentication required.
+Launches MCP — wraps Launch Library 2 API (ll.thespacedevs.com, free, no auth)
+
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 250+ live data sources.
 
 ## Tools
 
 | Tool | Description |
 |------|-------------|
-| `get_upcoming_launches` | Get upcoming rocket launches |
-| `get_past_launches` | Get past rocket launches |
-| `get_launch` | Get full launch details by ID |
-| `search_launches` | Search launches by keyword |
 
-## Quickstart (Pipeworx Gateway)
+## Quick Start
 
-```bash
-curl -X POST https://gateway.pipeworx.io/mcp \
-  -H "Content-Type: application/json" \
-  -d '{
-    "jsonrpc": "2.0",
-    "method": "tools/call",
-    "params": {
-      "name": "launches_get_upcoming_launches",
-      "arguments": { "limit": 5 }
-    },
-    "id": 1
-  }'
+Add to your MCP client (Claude Desktop, Cursor, Windsurf, etc.):
+
+```json
+{
+  "mcpServers": {
+    "launches": {
+      "url": "https://gateway.pipeworx.io/launches/mcp"
+    }
+  }
+}
 ```
+
+Or connect to the full Pipeworx gateway for access to all 250+ data sources:
+
+```json
+{
+  "mcpServers": {
+    "pipeworx": {
+      "url": "https://gateway.pipeworx.io/mcp"
+    }
+  }
+}
+```
+
+## Using with ask_pipeworx
+
+Instead of calling tools directly, you can ask questions in plain English:
+
+```
+ask_pipeworx({ question: "your question about Launches data" })
+```
+
+The gateway picks the right tool and fills the arguments automatically.
+
+## More
+
+- [All tools and guides](https://github.com/pipeworx-io/examples)
+- [pipeworx.io](https://pipeworx.io)
 
 ## License
 
