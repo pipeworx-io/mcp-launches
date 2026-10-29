@@ -1,12 +1,20 @@
 {
   "name": "@pipeworx/mcp-launches",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Launches MCP — wraps Launch Library 2 API (ll.thespacedevs.com)",
   "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
   "bin": {
     "mcp-launches": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
   },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "launches"],
   "license": "MIT",
@@ -14,19 +22,12 @@
     "type": "git",
     "url": "git+https://github.com/pipeworx-io/mcp-launches.git"
   },
-  "scripts": {
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "tsx": "^4.19.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.3",
-    "@cloudflare/workers-types": "^4.20260405.1"
-  },
+  "mcpName": "io.github.pipeworx-io/launches",
   "pipeworx": {
-    "sourceHash": "v1-533b8170bec8937dc8fb3080f5ab131c4deb967ce24bd845cb88666f9f67f8cb",
-    "sourceCommit": "33741fe6d9ba71856e73fa683c73572d1ddf2e93"
+    "mode": "gateway",
+    "slug": "launches",
+    "gatewaySlug": "launches",
+    "sourceHash": "v1-366b75d49f2625bfcd4cc84c445e2303f544b43bc947077dd39266a03b119919",
+    "sourceCommit": "5c89d6abb778d45da5d92002eb251978622bedf9"
   }
 }

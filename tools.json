@@ -1,0 +1,74 @@
+[
+  {
+    "name": "get_upcoming_launches",
+    "description": "Fetch the next scheduled rocket launches from Launch Library 2. Returns launch name, NET (no-earlier-than) time, status, launch pad, rocket type, and mission description. Default 10 results.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "description": "Number of launches to return (default 10)"
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "get_past_launches",
+    "description": "Fetch rocket launches that have already flown, sorted newest-first, from Launch Library 2. `launches` holds only those with a confirmed outcome — successful, failed or partial failure — so counting them answers \"how many launches happened\". A launch whose scheduled time has passed but whose outcome upstream has not yet confirmed is reported separately in `unconfirmed` with its current status, rather than being counted as flown. Use `since` and `until` to bound a window (ISO dates). Returns launch name, time, status, pad, rocket type, and mission description. Default 10 results.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "since": {
+          "type": "string",
+          "description": "Optional. Only launches at or after this time (ISO 8601, e.g. \"2026-08-01\" or \"2026-08-01T00:00:00Z\"). Use with `until` to count launches in a window."
+        },
+        "until": {
+          "type": "string",
+          "description": "Optional. Only launches before this time (ISO 8601). Defaults to now, since this tool covers launches that have already happened."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Number of launches to return (default 10)"
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "get_launch",
+    "description": "Get full details for a specific launch by ID. Returns name, time, status, pad, rocket, mission, orbit info, video links, and mission patches.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Launch Library 2 launch UUID (e.g. \"a6ce038e-4d89-4265-b47f-1c6ee5863f84\")"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  },
+  {
+    "name": "search_launches",
+    "description": "Search launches by keyword (rocket name, mission, agency). Returns matching launches with name, time, status, pad, rocket, and mission.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Search keyword (e.g. \"Falcon 9\", \"Artemis\", \"ISS\")"
+        },
+        "limit": {
+          "type": "number",
+          "description": "Number of results to return (default 10)"
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  }
+]
