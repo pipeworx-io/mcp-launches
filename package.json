@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-launches",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Launches MCP — wraps Launch Library 2 API (ll.thespacedevs.com)",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "launches",
     "gatewaySlug": "launches",
-    "sourceHash": "v1-366b75d49f2625bfcd4cc84c445e2303f544b43bc947077dd39266a03b119919",
-    "sourceCommit": "5c89d6abb778d45da5d92002eb251978622bedf9"
+    "sourceHash": "v1-1df9739a279abbb3b65d633e0d72d3dd3ce0025e1189fa899c497a36de3c2c9a",
+    "sourceCommit": "236b0a46d91f343fe094da9f499c378e88f78312"
   }
 }
